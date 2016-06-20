@@ -25,7 +25,9 @@ var body = document.querySelector('body');
 
 function makeMiddleEarth() {
   var middle_earth = document.createElement('section');
+
   middle_earth.setAttribute('id', 'middle-earth');
+
   for (var i=0; i < lands.length; i++) {
     var land =document.createElement('article');
     var heading = document.createElement('h1');
@@ -33,6 +35,7 @@ function makeMiddleEarth() {
     land.appendChild(heading);
     middle_earth.appendChild(land);
   }
+
 document.body.appendChild(middle_earth);
   // create a section tag with an id of middle-earth
   // inside, add each land as an article tag
@@ -48,21 +51,15 @@ makeMiddleEarth();
 function makeHobbits() {
   // display an unordered list of hobbits in the shire (which is the first article tag on the page)
   // give each hobbit a class of hobbit
-  var article = document.createElement('article');
+  var list = document.createElement('ul');
 
-  article.innerHTML = ( 
-  "<ul>"
-  + "<li class='hobbit'>" + hobbits[0] + "</li>"
-  + "<li class='hobbit'>" + hobbits[1] + "</li>"
-  + "<li class='hobbit'>" + hobbits[2] + "</li>"
-  + "<li class='hobbit'>" + hobbits[3] + "</li>"
-  +
-"</ul>" 
+  list.innerHTML = (
+  "<ul>" + "<li class='hobbit'>" + hobbits[0] + "</li>" + "<li class='hobbit'>" + hobbits[1] + "</li>" + "<li class='hobbit'>" + hobbits[2] + "</li>" + "<li class='hobbit'>" + hobbits[3] + "</li>" + "</ul>" 
 );
 
   var shire = document.querySelector('article');
 
-  shire.appendChild(article);
+  shire.appendChild(list);
 }
 
 makeHobbits();
@@ -78,7 +75,9 @@ function keepItSecretKeepItSafe() {
 
    the_ring.addEventListener("click", nazgulScreech); 
 
-  article[0].appendChild('the-ring');
+  var article = 'the ring';
+
+  document.querySelector("li").appendChild(the_ring);
 
   // create a div with an id of 'the-ring'
   // give the div a class of 'magic-imbued-jewelry'
@@ -93,23 +92,20 @@ keepItSecretKeepItSafe();
 
 function makeBuddies() {
 
-   var buddies = document.createElement('ul');
-
  var aside = document.createElement('aside');
 
-  aside.innerHTML = ( 
-  "<ul>"
-  + "<li class='hobbit'>" + buddies[0] + "</li>"
-  + "<li class='hobbit'>" + buddies[1] + "</li>"
-  + "<li class='hobbit'>" + buddies[2] + "</li>"
-  + "<li class='hobbit'>" + buddies[3] + "</li>"
-  +
+ var list = document.createElement('ul');
+
+  list.innerHTML = ( 
+  "<ul>" + "<li class='hobbit'>" + buddies[0] + "</li>" + "<li class='hobbit'>" + buddies[1] + "</li>" + "<li class='hobbit'>" + buddies[2] + "</li>" + "<li class='hobbit'>" + buddies[3] + "</li>" +
 "</ul>" 
 );
 
-  var rivendell = document.querySelector('aside');
+  var rivendell = document.querySelectorAll('article')[1];
+
 
   rivendell.appendChild(aside);
+  aside.appendChild(list);
 
   // create an aside tag
   // attach an unordered list of the 'buddies' in the aside
@@ -122,7 +118,10 @@ makeBuddies();
 
 function beautifulStranger() {
   // change the 'Strider' textnode to 'Aragorn'
-  node.Strider="Aragorn";
+   var rivendell = document.querySelectorAll("article")[1];
+    var li = rivendell.querySelectorAll("li")[3];
+    li.innerText = "Aragorn";
+
 }
 
 beautifulStranger();
@@ -137,7 +136,7 @@ leaveTheShire();
 
 
 function forgeTheFellowShip() {
-  var the-fellowship = document.createElement('div');
+  var the_fellowship = document.createElement('div');
  window.alert("They have joined you!");
   // create a new div called 'the-fellowship' within rivendell
   // add each hobbit and buddy one at a time to 'the-fellowship'
